@@ -107,7 +107,7 @@ Apply the gradients to the optimizer — Adam optimizer as defined in the origin
 
 Below is the animated picture of the training process. The Predicted image is plotted after every epoch. (Plotted only few images for brevity)
 
-<!-- ![animated_cycleGAN_90_epochs](https://user-images.githubusercontent.com/70571620/157236496-8ae54194-e645-469f-aff6-e6d5d4a208c3.gif) -->
+<!-- ![animated_cycleGAN_90_epochs](https://user-images.githubusercontent.com/70571618/157236496-8ae54194-e645-469f-aff6-e6d5d4a208c3.gif) -->
 
 
 
