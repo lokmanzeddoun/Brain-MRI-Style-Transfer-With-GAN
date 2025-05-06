@@ -78,7 +78,7 @@ def denormalize_image(img: np.ndarray) -> np.ndarray:
 if uploaded_file is not None:
     # Load image
     input_image = Image.open(uploaded_file)
-    st.image(input_image, caption="Uploaded Image", use_column_width=True)
+    st.write("### Input vs. Style-Transferred Output")
 
     # Preprocess
     preprocessed = preprocess_image(input_image)
@@ -97,6 +97,13 @@ if uploaded_file is not None:
         output = generator.predict(preprocessed)
         output_img = denormalize_image(output)
 
-    # Show result
-    st.subheader("Style-Transferred Image")
-    st.image(output_img, caption=f"{direction} Result", use_column_width=True)
+    # Convert output to PIL Image and upscale to input size for clarity
+    output_pil = Image.fromarray(output_img)
+    output_pil = output_pil.resize(input_image.size, resample=Image.BICUBIC)
+
+    # Show input and output side by side
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image(input_image, caption="Input Image", use_column_width=True)
+    with col2:
+        st.image(output_pil, caption=f"{direction} Result", use_column_width=True)
